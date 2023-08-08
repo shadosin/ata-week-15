@@ -1,0 +1,38 @@
+plugins {
+    id 'ata-curriculum.snippets-conventions'
+}
+
+checkstyle {
+    def suppressionFile = rootProject.file('Utilities/ATACheckstyle/configuration/checkstyle/unit1/suppressions.xml')
+    configProperties.put('checkstyle.suppression.filter', suppressionFile)
+}
+def wflowToTestsMap = [
+        'threads-passwordcracker-cl': [
+            'com.kenzie.passwordcracker.PasswordCracker'
+        ],
+        'threads-passwordcracker-test': [
+            'com.kenzie.passwordcracker.BatchPasswordHasherTest'
+        ],
+        'threads-passwordcracker-integration-test': [
+                'com.kenzie.passwordcracker.integration.BatchPasswordHasherIntegrationTest',
+                'com.kenzie.passwordcracker.integration.PasswordHasherIntegrationTest'
+        ]
+]
+
+wflowToTestsMap.forEach { wflowName, testList ->
+    tasks.register(wflowName) {
+        dependsOn wflowtest
+        test.doFirst {
+            filter {
+                testList.each { includeTestsMatching it }
+            }
+        }
+    }
+}
+dependencies {
+    implementation 'org.apache.commons:commons-csv:1.5'
+}
+
+repositories {
+    mavenCentral()
+}

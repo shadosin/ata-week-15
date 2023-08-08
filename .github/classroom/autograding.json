@@ -1,0 +1,114 @@
+{
+  "tests": [
+    {
+      "name": "Run PurchaseOrder Test",
+      "setup": "",
+      "run": "./gradlew immutability-purchaseorder-test --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run ConvertPrimePhoto Test",
+      "setup": "",
+      "run": "./gradlew immutability-photo-convertprimephototest --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PixelIntrospection Test",
+      "setup": "",
+      "run": "./gradlew immutability-photo-pixelintrospectiontest --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 11,
+      "points": 1
+    },
+    {
+      "name": "Run PrimePhotoIntrospection Test",
+      "setup": "",
+      "run": "./gradlew immutability-photo-primephotointrospectiontest --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run RGBIntrospectionTest",
+      "setup": "",
+      "run": "./gradlew immutability-photo-rgbintrospectiontest --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run ImmutableTime Test",
+      "setup": "",
+      "run": "./gradlew immutability-immutabletime-test --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run CreateThreads Test",
+      "setup": "",
+      "run": "./gradlew threads-createthreads-test --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PasswordCracker Test",
+      "setup": "",
+      "run": "./gradlew threads-passwordcracker-test --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run SleepAndRace Test",
+      "setup": "",
+      "run": "./gradlew threads-sleepandrace-test --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Photo Activity Integration Test",
+      "setup": "",
+      "run": "./gradlew immutability-photo-integrationtest --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Password Integration Test",
+      "setup": "",
+      "run": "./gradlew threads-passwordcracker-integration-test --rerun-tasks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 11,
+      "points": 1
+    }
+  ]
+}

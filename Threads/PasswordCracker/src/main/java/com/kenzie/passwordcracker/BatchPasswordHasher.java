@@ -47,6 +47,6 @@ public class BatchPasswordHasher implements Runnable{
     //TODO: Implement this method
     @Override
     public void run() {
-
+        hashPasswords();
     }
 }

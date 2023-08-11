@@ -28,6 +28,29 @@ public final class ImmutableTime {
     }
 
     // Add more methods here
+    public ImmutableTime plusMinutes(int minutesToAdd){
+
+        int totalMinutes = this.hour * MAX_MINUTES_IN_HOUR + this.minute + minutesToAdd;
+        int newHour = (totalMinutes/MAX_MINUTES_IN_HOUR) % MAX_HOURS_IN_DAY;
+        int newMinute = totalMinutes % MAX_MINUTES_IN_HOUR;
+        return new ImmutableTime(newHour, newMinute);
+    }
+    public ImmutableTime plusHours(int hoursToAdd){
+        int newHour = (this.hour + hoursToAdd) % MAX_HOURS_IN_DAY;
+        return new ImmutableTime(newHour, this.minute);
+    }
+
+    public ImmutableTime minusMinutes(int minutesToSubtract){
+        int totalMinutes = this.hour * MAX_MINUTES_IN_HOUR + this.minute - minutesToSubtract;
+        int newHour = (totalMinutes/MAX_MINUTES_IN_HOUR) % MAX_HOURS_IN_DAY;
+        int newMinute = totalMinutes % MAX_MINUTES_IN_HOUR;
+        return new ImmutableTime(newHour, newMinute);
+    }
+
+    public ImmutableTime minusHours(int hoursToSubtract){
+        int newHour = (this.hour - hoursToSubtract + MAX_HOURS_IN_DAY) % MAX_HOURS_IN_DAY;
+        return  new ImmutableTime(newHour, this.minute);
+    }
 
     @Override
     public String toString() {

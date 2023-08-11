@@ -18,7 +18,7 @@ public class WarehouseApp {
      * Identify where the race condition is happening and correct it with threadSleep().
      * @param args not used.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         remainingPackages = new ArrayList<WarehousePackage>();
         warehouseManager = new WarehouseManager();
 
@@ -27,8 +27,9 @@ public class WarehouseApp {
 
         //Sort out packages into new lists.
         warehouseManager.sortHighPriority();
+        sleepThread(2000);
         warehouseManager.sortBooks();
-
+        sleepThread(2000);
         //Printout the list of warehouseManager packages and returns them.
         printAndStoreLists();
     }
@@ -37,8 +38,8 @@ public class WarehouseApp {
      * Makes a thread sleep.
      * @param milliseconds How many milliseconds to sleep.
      */
-    public static void sleepThread(int milliseconds) {
-
+    public static void sleepThread(int milliseconds) throws InterruptedException {
+        Thread.sleep(milliseconds);
     }
 
     /**

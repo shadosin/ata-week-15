@@ -4,7 +4,7 @@ import com.kenzie.createthreads.resources.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeliveryManager {
+public class DeliveryManager implements Runnable {
 
     public List<WarehousePackage> incomingPackages;
     public List<WarehousePackage> additionalProcessing;
@@ -14,6 +14,7 @@ public class DeliveryManager {
      * @param packages incomingPackages.
      */
     public DeliveryManager(List<WarehousePackage> packages) {
+        super();
         incomingPackages = packages;
         additionalProcessing = new ArrayList<WarehousePackage>();
     }
@@ -23,7 +24,8 @@ public class DeliveryManager {
      */
     public void run() {
         System.out.println("DeliveryManager thread started.");
-
+        sortShipment();
+        printInventory();
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.kenzie.passwordcracker;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -8,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,10 +32,23 @@ public class PasswordHasher {
      */
     public static Map<String, String> generateAllHashes(List<String> passwords) throws InterruptedException {
         Map<String, String> passwordToHashes = Maps.newConcurrentMap();
-        BatchPasswordHasher batchHasher = new BatchPasswordHasher(passwords, DISCOVERED_SALT);
-        batchHasher.hashPasswords();
-        passwordToHashes.putAll(batchHasher.getPasswordToHashes());
 
+
+        List<List<String>> partionedList = Lists.partition(passwords, passwords.size()/4);
+        List<Thread> threads = new ArrayList<>();
+        List<BatchPasswordHasher> batchHashers = new ArrayList<>();
+
+        for(List<String> sublist : partionedList){
+            BatchPasswordHasher hasher = new BatchPasswordHasher(sublist, sublist.get(0));
+            batchHashers.add(hasher);
+            Thread thread = new Thread(hasher);
+            threads.add(thread);
+        }
+        waitForThreadsToComplete(threads);
+       for(BatchPasswordHasher batchPasswordHasher : batchHashers){
+           passwordToHashes.putAll(batchPasswordHasher.getPasswordToHashes());
+       }
+        writePasswordsAndHashes(passwordToHashes);
         return passwordToHashes;
     }
 

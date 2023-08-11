@@ -1,30 +1,31 @@
 package com.kenzie.photo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * A class representing a PrimePhoto - contains dimensions, and a list of Pixels that make up the image.
  */
-public class PrimePhoto {
-    private List<Pixel> pixels;
-    private int height;
-    private int width;
+public final class PrimePhoto {
+    private final List<Pixel> pixels;
+    private final int height;
+    private final int width;
     // used when saving to a buffered image
-    private int type;
+    private final int type;
 
     public PrimePhoto(List<Pixel> pixelList, int height, int width, int type) {
         if (pixelList.size() != (height * width)) {
             throw new IllegalArgumentException("Not enough pixels for the dimensions of the image.");
         }
-        this.pixels = pixelList;
+        this.pixels = new ArrayList<>(pixelList);
         this.height = height;
         this.width = width;
         this.type = type;
     }
 
     public List<Pixel> getPixels() {
-        return pixels;
+        return new ArrayList<>(pixels);
     }
 
     public int getHeight() {

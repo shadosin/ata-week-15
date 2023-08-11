@@ -12,10 +12,7 @@ public class WarehouseApp {
      */
     public static void main(String [] args) {
         System.out.println("WarehouseApp thread started.");
-
-        deliveryWarehouse1 = new DeliveryManager(DeliveryTruck.deliverPackages());
-        deliveryWarehouse1.sortShipment();
-        deliveryWarehouse1.printInventory();
+        startDeliveryThread(DeliveryTruck.deliverPackages());
     }
 
     /**
@@ -23,6 +20,10 @@ public class WarehouseApp {
      * @param packages Delivered packages.
      */
     public static void startDeliveryThread(List<WarehousePackage> packages) {
+        deliveryWarehouse1 = new DeliveryManager(packages);
+      Thread warehouseThread = new Thread(deliveryWarehouse1);
+
+      warehouseThread.start();
 
     }
 

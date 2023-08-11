@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class WarehouseAppTest {
 
     @Test
-    public void sleepThread_startTimer_mainThreadPaused() {
+    public void sleepThread_startTimer_mainThreadPaused() throws InterruptedException {
         // GIVEN
         WarehouseApp warehouse = new WarehouseApp();
 
@@ -27,7 +27,7 @@ public class WarehouseAppTest {
     }
 
     @Test
-    public void main_compareLists_listsMatching() throws NoSuchFieldException, IllegalAccessException {
+    public void main_compareLists_listsMatching() throws NoSuchFieldException, IllegalAccessException, InterruptedException {
         // GIVEN
         boolean allClear = true;
         WarehouseApp warehouseInstance = new WarehouseApp();

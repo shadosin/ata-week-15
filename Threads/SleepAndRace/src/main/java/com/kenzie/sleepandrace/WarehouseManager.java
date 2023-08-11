@@ -5,7 +5,7 @@ import com.kenzie.sleepandrace.resources.WarehousePackage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WarehouseManager {
+public class WarehouseManager implements Runnable {
     private List<WarehousePackage> incomingPackages;
     private List<WarehousePackage> books;
     private HighPriorityManager hPManager;
@@ -59,5 +59,10 @@ public class WarehouseManager {
                 incomingPackages.remove(p);
             }
         }
+    }
+
+    @Override
+    public void run() {
+        sortBooks();
     }
 }
